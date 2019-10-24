@@ -1,10 +1,14 @@
 import React from "react";
 
-const List = ({ poke }) => {
+import { Link } from "react-router-dom";
+
+
+const List = ({ name, url }) => {
   return (
-      <div className="list">
-          <p>{poke.name}</p>
-          
+    
+    <div className="list">
+      <p>{name}</p>
+      <Link to={`/pokemon/${name}`}> {url}</Link>
     </div>
   );
 };

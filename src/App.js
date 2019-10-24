@@ -1,8 +1,9 @@
 import React from "react";
 import "./App.css";
 import List from "./components/List";
-
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Onedescription from "./components/OneDescription";
+import BasicInformation from "./components/BasicInformation";
 
 class App extends React.Component {
   constructor(props) {
@@ -25,14 +26,20 @@ class App extends React.Component {
 
   render() {
     return (
-      <Router>
-        <div className="App">
-          {this.state.pokeList.map((pokemon, index) => (
-            <List key={index} poke={pokemon} />
-          ))}
-          
-        </div>
-      </Router>
+      <div className="App">
+        <Router>
+          <Switch>
+            <Route exact path="/">
+              {this.state.pokeList.map((pokemon, index) => (
+                <List {...pokemon} key={index} />
+              ))}
+            </Route>
+            <Route path={`/pokemon/`}>
+              <BasicInformation />
+            </Route>
+          </Switch>
+        </Router>
+      </div>
     );
   }
 }
