@@ -9,7 +9,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pokeList: []
+      pokeList: [],
     };
   }
 
@@ -34,7 +34,7 @@ class App extends React.Component {
                 <List {...pokemon} key={index} />
               ))}
             </Route>
-            <Route path={`/pokemon/`}>
+            <Route exact path="/pokemon/:id">
               <BasicInformation />
             </Route>
           </Switch>
